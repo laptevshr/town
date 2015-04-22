@@ -1,0 +1,305 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+html, body {
+  padding-bottom: 20px;
+  background-color: #ECECE3;
+  height: 100%;
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+     /* position: fixed; */
+  /* top: 51px; */
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  /* padding: 20px; */
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+  border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+
+
+
+.sidebar-title h2 {
+  background-color: #DE4951;
+  padding: 5px 20px;
+    margin: 15px -20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-sidebar {
+  margin-right: -23px;
+  margin-bottom: 20px;
+  margin-left: -23px;
+}
+.nav-sidebar > li > a {
+  color: #fff;
+    padding: 0px; 
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+
+
+
+.navbar-inverse {
+  background-color: #e91c09;
+  border: 1px solid #d30d01;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #FFF;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #E91C09;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+  background-color: #FFFFDC;
+}
+
+.navbar-toggle {
+  background-color: #fff;
+}
+
+strong.ng-binding {
+  color: #f21c0a;
+}
+
+
+
+
+
+
+.topline {
+    background-color: #de4951;
+    height: 50px;
+}
+
+.logo
+{
+    color:#fff;
+    font-size:1.4em;
+    font-family:Arial;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-left: 25px;
+}
+
+.search{
+    padding-top: 8px;
+}
+
+.search .form-group{
+      margin-bottom: 0px;
+}
+
+#inpSearch{
+      width: 80%;
+}
+
+.paramTown{
+    color: #fff;
+    font-size: 1.2em;
+    padding-top: 13px;
+}
+
+.btnProfile{
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.town{
+    padding-top: 8px;
+}
+
+.town .form-control{
+    background-color: #de4951;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.contentCol{
+
+}
+
+.leftCol{
+    background-color: #393745;
+    color:#fff;
+    height: 100%;
+}
+
+.footer {
+  border-top: solid 1px #D0D0D0;
+  text-align: center;
+}
+
+
+
+.input-group {
+  width: 200%;
+}
+
+.navbar-fixed-bottom, .navbar-fixed-top
+{
+    position:inherit;
+}
+
+
+
+li.paramTown:hover, li.btnProfile:hover, li.town:hover {
+  /*background: rgba(255, 255, 255, 0);*/
+}
+
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: hsla(0, 0%, 93%, 0);
+}
+
+
+
+.nav > li {
+  color: #FFFFFF;
+  position: relative;
+  display: block;
+  padding: 0px 15px;
+      line-height: 50px;
+}
+
+
+.nav-sidebar > li {
+    color: #C3C3C3;
+    position: relative;
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0px 65px;
+    line-height: 40px;
+}
+   
+.nav-sidebar > li:hover {
+  background-color: #514F5A;
+  color: #C3C3C3;
+    cursor: pointer;
+        margin-left: 10px;
+    margin-right: 10px;
+    padding: 0px 65px;
+    line-height: 40px;
+}
+
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+
+.navbar-inverse {
+    background-color: #de4951;
+    background-image: none;
+    border: none;
+}
+
+.navbar-inverse .navbar-brand {
+  color:#fff;
+}
+
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #fff;
+}
+
+
+#menuLeft{
+    padding: 20px 0px;
+    }

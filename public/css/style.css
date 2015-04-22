@@ -1,0 +1,83 @@
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.padtop10 {
+    padding-top: 10px;
+}
+
+.padtop5 {
+    padding-top: 5px;
+}
+
+.martop5 {
+    margin-top: 5px;
+}
+
+.linkTown {
+    background: url(../img/town.png) no-repeat 20px 5px;
+    background-size: 25px;
+    padding-left: 25px;
+}
+
+.linkMedic {
+    background: url(../img/medic.png) no-repeat 20px 5px;
+    background-size: 25px;
+    padding-left: 25px;
+}
+
+.linkHoliday {
+    background: url(../img/holiday.png) no-repeat 20px 5px;
+    background-size: 25px;
+    padding-left: 25px;
+}
+
+.linkSales {
+    background: url(../img/torgovlya.png) no-repeat 20px 5px;
+    background-size: 25px;
+    padding-left: 25px;
+}
+
+.linkCar {
+    background: url("../img/car.png") no-repeat 20px 5px;
+    background-size: 25px;
+    padding-left: 25px;
+}
+
+.linkServices {
+    background: url("../img/services.png") no-repeat 20px 5px;
+    background-size: 25px;
+    padding-left: 25px;
+}
+
+.panSearch {
+    top: 8px;
+    left: 20px;
+}
+
+.quote {
+    margin-top: 10px;
+}
+
+.sidebar-question {
+    font-weight: bold;
+}
+
+.sidebar-response {
+    font-style: italic;
+    padding-top: 5px;
+}
+
+li.town {
+    margin-top: 10px;
+}
+
+.btnFunc {
+    float: left;
+    padding: 5px;
+}

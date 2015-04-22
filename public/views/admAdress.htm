@@ -1,0 +1,136 @@
+<!--admAdressCtrl-->
+
+<div class="jumbotron">
+
+    <form method="post" ng-submit="addAddress()">
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="typeAddress" class="control-label input-group">Type address</label>
+
+                <div class="btn-group">
+                    <label class="btn btn-default" ng-model="typeAddress" btn-radio="'Street'">Street</label>
+                    <label class="btn btn-default" ng-model="typeAddress" btn-radio="'Build'">Build</label>
+                </div>
+            </div>
+
+
+            <div class="col-md-2" ng-hide="typeAddress == 'Street'">
+
+                <label for="selectStreet" class="control-label input-group">Select street: {{ selectedStreetID }}</label>
+
+                <select ng-model="street" ng-options="street.name for street in streets">
+                    <option value="">-- Make a Choice --</option>
+                </select>
+
+                <!--<select class="form-control" ng-model="selectedStreetID">
+                    <option ng-repeat="street in streets">{{ street.name }}</option>
+                </select>-->
+            </div>
+
+
+
+
+
+
+            <div class="col-md-2" ng-hide="typeAddress == 'Street'">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="build.Shop"> Shop
+                    </label>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="build.Living"> Living house
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-2" ng-hide="typeAddress == 'Street'">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="build.Admin"> Administration
+                    </label>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="build.Study"> Study
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height:10px;">
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="form-group">
+                    <label for="indexAddress" class="col-sm-2 control-label">index</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="indexAddress" name="indexAddress" ng-model="indexAddress" placeholder="index Address">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nameAddress" class="col-sm-2 control-label">name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nameAddress" placeholder="name" name="nameAddress" ng-model="nameAddress">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3">
+                <div class="form-group" ng-hide="typeAddress == 'Street'">
+                    <label for="parentAddress" class="col-sm-2 control-label">parent</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="parentAddress" name="parentAddress" placeholder="parent" ng-model="parentAddress">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="descrAddress" class="col-sm-2 control-label">descr</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="descrAddress" name="descrAddress" ng-model="descrAddress" placeholder="descr">
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="latlangAddress" class="col-sm-2 control-label">Lat Lang</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="latlangAddress" placeholder="Lat Lang" ng-model="latlangAddress">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="polygonAddress" class="col-sm-2 control-label">polygon</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="polygonAddress" placeholder="polygon" ng-model="polygonAddress">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row text-right" style="padding-top:20px;">
+            <button type="submit" class="btn btn-default">Add</button>
+        </div>
+</div>
+
+</form>
+</div>
+<div class="row">
+    <button type="submit" class="btn btn-default" ng-click="getAddresses()">show</button>
+    <div ng-repeat="rowsaddress in address">
+        {{ rowsaddress.id }} {{ rowsaddress.index }} {{ rowsaddress.name }} {{ rowsaddress.descr }} {{ rowsaddress.typeAddress }}
+    </div>
+</div>

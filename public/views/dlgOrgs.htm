@@ -1,0 +1,209 @@
+<div class="modal-header">
+    <h3 class="modal-title">Добавление организации: реквизиты</h3>
+</div>
+
+<div class="modal-body">
+
+    <form method="post" ng-submit="addOrg()" class="form-horizontal">
+        <div class="form-group">
+            <label for="nameOrg" class="col-sm-2 control-label">Название организации</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="orgName" placeholder="Название организации">
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Description организации</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="descr" placeholder="Description of organization">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Category</label>
+            <div class="col-sm-8">
+                <select class="btn btn-default btn-md dropdown-toggle" ng-model="selectCategory" ng-options="tyoeOrg.name for tyoeOrg in typeOrg">
+                    <option value="">-- Make a Choice --</option>
+                </select>
+                <div style="padding: 10px;">
+                    <span ng-repeat="cat in category" style="border: 1px #A8A6A6 dotted;padding: 5px;">
+                        {{ cat.name }}
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="delCategory($index)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    </span>
+                </div>
+
+            </div>
+            <div class="col-sm-2">
+                <div class="form-inline" style="padding-top:5px;">
+                    <button type="button" class="btn btn-success btn-xs" ng-click="addCategory()">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <label for="nameOrg" class="col-sm-2 control-label">Адрес</label>
+            <div class="col-sm-10">
+                <input disabled="disabled" type="text" class="form-control" ng-model="latlangOrg" placeholder="Адрес [cordinate]">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nameOrg" class="col-sm-2 control-label">Phones</label>
+            <button type="button" class="btn btn-success btn-xs martop5" ng-click="addPhone()">Add phone number</button>
+            <div class="col-sm-12 form-inline padtop10" ng-repeat="phone in phones">
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-3">
+                    <input type="number" class="form-control" ng-model="phone.main" placeholder="телефон">
+                </div>
+                <div class="col-sm-3">
+                    <input type="number" class="form-control" ng-model="phone.insNum" placeholder="внутр. номер">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" ng-model="phone.title" placeholder="должность, отдел">
+                </div>
+                <div class="col-sm-1">
+                    <div class="form-inline" style="padding-top:5px;">
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="delPhone($index)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="nameOrg" class="col-sm-2 control-label">Часы работы</label>
+            <div class="col-sm-4">
+                <div class="btn-group">
+                    <dayOfWeeks ng-repeat="mode in modes">
+                        <button type="button" class="btn btn-default btn-sm" ng-model="mode.dayOfWeek" btn-checkbox>{{mode.day}}</button>
+                    </dayOfWeeks>
+                </div>
+            </div>
+            <div class="col-sm-4 form-inline">
+                <input type="text" class="form-control" ng-model="startHourAdr" style="width:42px;"> :
+                <input type="text" class="form-control" ng-model="startMinAdr" style="width:42px;"> -
+                <input type="text" class="form-control" ng-model="endHourAdr" style="width:42px;"> :
+                <input type="text" class="form-control" ng-model="endMinAdr" style="width:42px;">
+            </div>
+            <div class="col-sm-2">
+                <div class="form-inline" style="padding-top:5px;">
+                    <button type="button" class="btn btn-success btn-xs" ng-click="addMode(type)">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="removeTel(type)">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="mode in modeWork">
+            <div class="form-group">
+                <label for="nameOrg" class="col-sm-2 control-label">Часы работы</label>
+                <div class="col-sm-9">
+                    Mode work: {{ mode }}
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <div class="form-inline">
+                            <input type="text" class="form-control" ng-model="standartBreak.br" style="width:140px;">
+                            <button type="button" class="btn btn-success btn-xs" ng-click="addBreak(modeWork[$index])">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="nameOrg" class="col-sm-2 control-label">Сайт</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="site" placeholder="Сайт">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nameOrg" class="col-sm-2 control-label">Соцсети</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="socialPage" placeholder="Facebook, Twitter, VK">
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="nameOrg" class="col-sm-2 control-label">Эл. почта организации</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="email" placeholder="адреса через запятую">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Personal page</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="personalPage" placeholder="Personal page">
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            <label for="nameAddress" class="col-sm-2 control-label">Tags</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="tagsType" placeholder="Tags" name="tagsType" ng-model="tags">
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="nameAddress" class="col-sm-2 control-label">Photo</label>
+            <div class="col-sm-10">
+                <button type="button" class="btn btn-success btn-xs martop5" ng-click="addPhoto()">Add photo</button>
+                <div ng-repeat="photo in photos">
+                    <div class="form-inline padtop5">
+                        <input type="text" class="form-control" ng-model="photo.fileName" placeholder="Name of photo">
+
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="delPhoto([$index])">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group text-right" style="padding-top:20px; padding-right:15px;">
+            <button type="submit" class="btn btn-success">Добавление организации</button>
+        </div>
+    </form>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">Close</button>
+    <!--<button class="btn btn-warning" ng-click="cancel()">Cancel</button>-->
+</div>

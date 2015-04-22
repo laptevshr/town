@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html>
+
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Справочник online карта Шарыпово. Здесь можно найти интересующие оргнизации, улицы, дома, районы; посмотреть фотографии зданий и панорамы улиц" />
+    <meta name="keywords" content="город, игры, интернет, каталог, карта, недвижимость,  работа, сайты, справочник, фото, фотографии, электронный, map, games, Шарыпово, Sharipovo, Sharypovo, online, дома, индекс, карта, панорамы города, районы, улицы, фотографии зданий, электронная" />
+    <meta name="language" content="Russian" />
+    <meta name="country" content="Russian federation" />
+    <meta name="city" content="Шарыпово" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <script src="scripts/vendor/jquery-2.1.3.min.js"></script>
+    <!--<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>-->
+
+
+    <!-- Добавляем файлы стилей CSS для библиотеки -->
+
+    <link href="scripts/vendor/leaflet/leaflet.css" rel="stylesheet" />
+    <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.ie.css" />
+ <![endif]-->
+    <!-- Добавляем ссылку на JS-скрипт библиотеки -->
+    <script src="scripts/vendor/leaflet/leaflet.js"></script>
+    <!--<script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>-->
+
+
+
+    <title>Справочник Шарыпово онлайн: улицы, дома и организации города</title>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="https://code.angularjs.org/1.2.25/angular-animate.min.js"></script>
+
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/bootstrap-theme.css" rel="stylesheet" />
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/admin.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+
+
+    <!--slow up message >>-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.9/toaster.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.9/toaster.min.js"></script>
+
+</head>
+
+
+
+<body ng-app="townApp">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="logo navbar-brand" href="#"><span>
+                        <img src="img/point.png" alt="logo" />TUTVSE24.RU</span></a>
+
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="town">
+                        <select class="form-control">
+                            <option>Шарыпово</option>
+                        </select>
+                    </li>
+                    <li class="paramTown" ng-controller='TimeCtrl'>
+                        <span>
+                                <img src="img/time.png" width="24" style="margin-right: 10px;" />{{ clock  | date:'dd.MM.yyyy HH:mm'}}
+                            </span>
+                    </li>
+                    <li class="paramTown">
+                        <span>
+                            <img src="img/sun.png" width="24" />
+                            <asp:Label ID="lbTemperature" runat="server" />
+                            &deg;C</span>
+                    </li>
+                    <li class="btnProfile"><a href="#">Регистрация</a>
+                    </li>
+                    <li class="btnProfile"><a href="#">Вход</a>
+                    </li>
+                </ul>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group panSearch">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </div>
+                            <input type="text" class="form-control" id="inpSearch" placeholder="Do you want search?" />
+                            <button type="submit" class="btn btn-warning">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid fullheight">
+        <div class="row fullheight">
+
+
+            <div class="col-lg-2x col-md-2 col-sm-2 leftCol sidebar">
+                <!-- navigation for admin page-->
+                <div id="menuLeft">
+                    <ul class="nav nav-sidebar">
+                        <!--<li class="linkTown" ng-click="admnav('Address')">-->
+                        <li class="linkTown">
+                            <a href='#admAdress'>Address</a>
+                        </li>
+                        <li class="linkMedic">
+                            <a href='#admOrg'>Organizations</a>
+                        </li>
+                        <li class="linkHoliday">Users</li>
+                        <li class="linkSales">Properties</li>
+                    </ul>
+                </div>
+                <div ng-include="'views/admin_filtr.htm'"></div>
+                <div ng-include="'views/admin_functions.htm'"></div>
+                <div class="end-sidebar"></div>
+            </div>
+
+            <div class="col-lg-10 col-md-10 col-sm-10 contentCol main">
+                <div class="row" style="height: 50px;">
+                    <div id="map" style="height: 50px;"></div>
+                    <script src="libs/map.js"></script>
+                </div>
+                <div class="row">
+
+
+
+                    <div ng-view>
+                        <h1>Run!</h1>
+                    </div>
+
+
+
+
+                </div>
+                <div class="row">
+                    <div ng-include="'views/footer.htm'"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="libs/town.js"></script>
+    <script src="scripts/controllers/admAdressCtrl.js"></script>
+    <script src="scripts/controllers/admOrgCtrl.js"></script>
+    <script src="scripts/controllers/fun.js"></script>
+    <script src="scripts/services/dbFactory.js"></script>
+    <script src="scripts/controllers/dlgTypeCtrl.js"></script>
+    <script src="scripts/controllers/dlgOrgsCtrl.js"></script>
+    <toaster-container></toaster-container>
+
+
+</body>
+
+</html>
